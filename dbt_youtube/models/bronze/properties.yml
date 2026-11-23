@@ -3,7 +3,36 @@ models:
   - name: bronze_date #  Must match the filename of a model -- including case sensitivity.
     config:
       materialized: table
+      schema : bronze #model level schema override(not necessary if already defined in dbt_project.yml)
 
   - name: bronze_product
     config:
       materialized: table
+      schema : bronze #model level schema override(not necessary if already defined in dbt_project.yml)
+
+  - name: bronze_sales
+    columns:
+        - name: sales_id
+          data_tests:
+            - unique
+            - not_null
+
+
+  - name: bronze_store
+    columns:
+        - name: store_sk
+          data_tests:
+            - unique
+            - not_null
+        - name: store_name
+          data_tests:
+            - accepted_values:
+                arguments:
+                    values: ['MegaMart Manhattan','MegaMart Brooklyn','MegaMart Austin','MegaMart San Jose', 'MegaMart Toronto']
+
+                 
+
+
+    
+
+

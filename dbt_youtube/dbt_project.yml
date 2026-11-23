@@ -33,9 +33,15 @@ models:
   dbt_youtube:
     bronze:
       +materialized: table
+      +schema : bronze
 
     silver:
       +materialized: view
+      +schema : silver
 
     gold:
       +materialized: table
+      +schema : gold
+seeds:
+  dbt_youtube:
+  +schema: bronze
