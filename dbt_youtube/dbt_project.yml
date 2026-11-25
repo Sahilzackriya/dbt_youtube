@@ -44,4 +44,4 @@ models:
       +schema : gold
 seeds:
   dbt_youtube:
-  +schema: bronze
+    +schema: bronze
